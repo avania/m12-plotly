@@ -1,0 +1,28 @@
+---
+title: "Index.Rmd"
+output: html_document
+---
+This is an example of annotating, from plotly's website
+```{r, echo=FALSE}
+
+library(plotly)
+
+m <- mtcars[which.max(mtcars$mpg), ]
+
+a <- list(
+  x = m$wt,
+  y = m$mpg,
+  text = rownames(m),
+  xref = "x",
+  yref = "y",
+  showarrow = TRUE,
+  arrowhead = 7,
+  ax = 20,
+  ay = -40
+)
+
+plot_ly(mtcars, x = ~wt, y = ~mpg) %>%
+  add_markers() %>%
+  layout(annotations = a)
+```
+
